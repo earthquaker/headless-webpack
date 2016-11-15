@@ -1,5 +1,9 @@
 var path = require('path');
 
+var nodeModules = {};
+
+nodeModules['casper'] = 'commonjs casper';
+
 module.exports = {
     context: path.resolve('js'),
     entry: ["../src"],
@@ -8,6 +12,7 @@ module.exports = {
         publicPath: '/public/',
         filename: "index.js"
     },
+    externals: nodeModules,
     devServer: {
         contentBase: 'public'
     },
