@@ -1,7 +1,7 @@
-let settings = require('./.settings.js');
+import { url } from './.settings.js';
 let casper = require('casper').create();
 
-casper.start(settings.url, function() {
+casper.start(url, function() {
     this.echo(this.getTitle());
 });
 
