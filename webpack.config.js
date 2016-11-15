@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 var path = require('path');
 var fs = require('fs');
 
@@ -14,23 +15,22 @@ fs.readdirSync('node_modules')
 nodeModules['casper'] = 'commonjs casper';
 
 module.exports = {
-    context: path.resolve('js'),
-    entry: ["../src"],
+    entry: ["./src/index.js"],
+    target: 'node',
     output: {
-        path: path.resolve('build/'),
-        publicPath: '/public/',
+        path: path.join(__dirname, 'build'),
         filename: "index.js"
     },
     externals: nodeModules,
-    devServer: {
-        contentBase: 'public'
-    },
     module: {
         loaders: [
-            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+            {
+                test: /\.js$/,
+                loader: "babel-loader",
+                query: {
+                    presets: ['es2015']
+                }
+            }
         ]
-    },
-    resolve: {
-        extensions: ['', '.js']
     }
 };
