@@ -1,10 +1,7 @@
+let settings = require('./.settings.js');
 let casper = require('casper').create();
 
-casper.start('http://casperjs.org/', function() {
-    this.echo(this.getTitle());
-});
-
-casper.thenOpen('http://phantomjs.org', function() {
+casper.start(settings.url, function() {
     this.echo(this.getTitle());
 });
 
