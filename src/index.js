@@ -1,5 +1,7 @@
 import { url } from './.settings.js';
-let casper = require('casper').create();
+import casperModule from 'casper';
+
+let casper = casperModule.create();
 
 casper.start(url, function() {
     this.echo(this.getTitle());
